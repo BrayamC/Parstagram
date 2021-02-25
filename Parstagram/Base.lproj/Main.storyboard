@@ -104,29 +104,64 @@
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="114.50892857142857"/>
         </scene>
+        <!--Camera View Controller-->
+        <scene sceneID="Arc-kD-7nl">
+            <objects>
+                <viewController id="pjA-FF-3vR" customClass="CameraViewController" customModule="Parstagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QZK-Oq-3iZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Pje-wu-apB">
+                                <rect key="frame" x="20" y="20" width="375" height="370"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="370" id="HHU-Ab-5s3"/>
+                                    <constraint firstAttribute="height" constant="370" id="VIS-td-5fW"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="igD-Ea-ZlT"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Pje-wu-apB" firstAttribute="top" secondItem="igD-Ea-ZlT" secondAttribute="top" constant="20" id="2pa-yP-NUO"/>
+                            <constraint firstItem="igD-Ea-ZlT" firstAttribute="trailing" secondItem="Pje-wu-apB" secondAttribute="trailing" constant="20" id="f88-vk-d9L"/>
+                            <constraint firstItem="Pje-wu-apB" firstAttribute="leading" secondItem="igD-Ea-ZlT" secondAttribute="leading" constant="20" id="gCz-9i-9TA"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2u8-Rd-y7Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="953.62318840579712" y="1575"/>
+        </scene>
         <!--Feed View Controller-->
         <scene sceneID="wKH-G9-jMJ">
             <objects>
                 <viewController id="XWb-Wz-DUT" customClass="FeedViewController" customModule="Parstagram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bwJ-Xk-9F4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="j4k-dQ-n9o"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="IWF-6Y-sFB"/>
+                    <navigationItem key="navigationItem" id="IWF-6Y-sFB">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="insta_camera_btn" id="kIO-X9-FE1">
+                            <connections>
+                                <segue destination="pjA-FF-3vR" kind="presentation" id="p9T-Ye-9nR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kxE-YQ-eJ5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1730" y="115"/>
+            <point key="canvasLocation" x="132" y="1575"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sy7-eC-hLu">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c8u-c4-d6x" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="c8u-c4-d6x" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bhp-Uz-Nle">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -136,10 +171,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HG0-5q-40d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="946" y="115"/>
+            <point key="canvasLocation" x="132" y="831"/>
         </scene>
     </scenes>
     <resources>
+        <image name="image_placeholder" width="375" height="375"/>
+        <image name="insta_camera_btn" width="25" height="25"/>
         <image name="instagram_logo" width="255" height="108"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
