@@ -6,9 +6,37 @@
 //
 
 import UIKit
+import Alamo
 
-class CameraViewController: UIViewController {
+class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var commentField: UITextField!
+    
+    @IBAction func onSubmit(_ sender: Any) {
+        
+    }
+    
+    @IBAction func onCameraButton(_ sender: Any) {
+        // launch camera
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        
+        // Use camera if possible, else use library
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            picker.sourceType = .camera
+        } else {
+            picker.sourceType = .photoLibrary
+        }
+        
+        present(picker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.editedImage] as! UIImage
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
