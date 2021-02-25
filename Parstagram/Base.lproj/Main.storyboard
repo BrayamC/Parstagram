@@ -44,8 +44,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vba-b5-jfk">
-                                <rect key="frame" x="47" y="470" width="320" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vba-b5-jfk">
+                                <rect key="frame" x="47" y="469" width="320" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -53,11 +53,17 @@
                                 <rect key="frame" x="82" y="539" width="60" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Sign in"/>
+                                <connections>
+                                    <action selector="onSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lI5-ls-zfk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGV-Bw-GxV">
                                 <rect key="frame" x="265" y="539" width="67" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Sign up"/>
+                                <connections>
+                                    <action selector="OnSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wa5-a9-faY"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -77,7 +83,7 @@
                             <constraint firstItem="Wxd-l1-UYK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="47" id="WDg-2M-0dn"/>
                             <constraint firstItem="xow-PS-Au0" firstAttribute="top" secondItem="Wxd-l1-UYK" secondAttribute="bottom" constant="7" id="X0U-0q-OrU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kjg-m5-Ao4" secondAttribute="bottom" constant="536" id="Y37-BL-GlS"/>
-                            <constraint firstItem="Eaz-qT-rYf" firstAttribute="top" secondItem="Vba-b5-jfk" secondAttribute="bottom" constant="35" id="YFf-H3-z18"/>
+                            <constraint firstItem="Eaz-qT-rYf" firstAttribute="top" secondItem="Vba-b5-jfk" secondAttribute="bottom" constant="36" id="YFf-H3-z18"/>
                             <constraint firstItem="Wxd-l1-UYK" firstAttribute="top" secondItem="gZk-c7-lbt" secondAttribute="bottom" constant="8" id="aGo-qd-isV"/>
                             <constraint firstItem="gZk-c7-lbt" firstAttribute="top" secondItem="kjg-m5-Ao4" secondAttribute="bottom" constant="31" id="c52-A0-xym"/>
                             <constraint firstItem="Vba-b5-jfk" firstAttribute="top" secondItem="xow-PS-Au0" secondAttribute="bottom" constant="12" id="eXl-yI-IXP"/>
@@ -88,6 +94,11 @@
                             <constraint firstItem="xow-PS-Au0" firstAttribute="top" secondItem="Wxd-l1-UYK" secondAttribute="bottom" constant="7" id="zjs-Wc-HnY"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="passwordField" destination="Vba-b5-jfk" id="fAm-lo-ojv"/>
+                        <outlet property="usernameField" destination="Wxd-l1-UYK" id="o2a-sD-ROf"/>
+                        <segue destination="c8u-c4-d6x" kind="presentation" identifier="loginSegue" id="w4m-ed-25w"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -98,7 +109,7 @@
             <objects>
                 <viewController id="XWb-Wz-DUT" customClass="FeedViewController" customModule="Parstagram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bwJ-Xk-9F4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="j4k-dQ-n9o"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -115,7 +126,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c8u-c4-d6x" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bhp-Uz-Nle">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
