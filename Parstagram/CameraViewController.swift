@@ -7,6 +7,7 @@
 
 import UIKit
 import AlamofireImage
+import Parse
 
 class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -14,6 +15,31 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var commentField: UITextField!
     
     @IBAction func onSubmit(_ sender: Any) {
+        
+        // parse creates schema based on these attributes
+        // creates table
+        let post = PFObject(className: "Posts")
+        
+        // if attribute doesnt exist, creates attributes with data
+        post["caption"] = commentField.text
+        post["author"] = PFUser.current()!
+        
+        let imageData = imageView.image!.pngData()
+        
+        // makes new table
+        let file = PFFileObject(data: imageData!)
+        
+        post["image"] = file
+        
+        post.saveInBackground { (success, error) in
+            if success {
+                self.dismiss(animated: true, completion: nil)
+                print("saved!")
+            } else {
+                print("error!")
+            }
+        }
+        
         
     }
     
