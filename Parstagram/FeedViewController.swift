@@ -13,21 +13,48 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var tableView: UITableView!
     var posts = [PFObject]()
-    
+    var refreshControl: UIRefreshControl!
+
+    @objc func onRefresh() {
+        
+        //self.tableView.remo
+        let query = PFQuery(className: "Posts")
+        query.order(byDescending: "createdAt")
+        query.includeKey("author")
+        
+        query.limit = 5
+        
+        query.findObjectsInBackground{ (posts, error) in
+            if posts != nil {
+                self.posts = posts!
+                self.tableView.reloadData()
+            }
+        }
+        print("REFRESHED")
+        // remove spinning refresh symbol
+        self.refreshControl.endRefreshing()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        // Add Refresh Control
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(onRefresh), for: .valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         let query = PFQuery(className: "Posts")
+        query.order(byDescending: "createdAt")
         query.includeKey("author")
         
-        query.limit = 20
+        query.limit = 5
         
         query.findObjectsInBackground{ (posts, error) in
             if posts != nil {
