@@ -14,13 +14,29 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     var posts = [PFObject]()
     var refreshControl: UIRefreshControl!
-
+    var numberOfPosts: Int! = 1
+    
     func loadPosts(){
         let query = PFQuery(className: "Posts")
         query.order(byDescending: "createdAt")
         query.includeKey("author")
         
-        query.limit = 5
+        query.limit = numberOfPosts
+        
+        query.findObjectsInBackground{ (posts, error) in
+            if posts != nil {
+                self.posts = posts!
+                self.tableView.reloadData()
+            }
+        }
+    }
+    func loadMorePosts(){
+        let query = PFQuery(className: "Posts")
+        query.order(byDescending: "createdAt")
+        query.includeKey("author")
+        
+        numberOfPosts = numberOfPosts + 1;
+        query.limit = numberOfPosts
         
         query.findObjectsInBackground{ (posts, error) in
             if posts != nil {
@@ -53,6 +69,13 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         loadPosts()
+    }
+    
+    // happens when user scrolls and is about to reach end
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt IndexPath: IndexPath) {
+        if IndexPath.row + 1 == posts.count{
+            loadMorePosts()
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
