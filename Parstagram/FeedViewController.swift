@@ -15,9 +15,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     var posts = [PFObject]()
     var refreshControl: UIRefreshControl!
 
-    @objc func onRefresh() {
-        
-        //self.tableView.remo
+    func loadPosts(){
         let query = PFQuery(className: "Posts")
         query.order(byDescending: "createdAt")
         query.includeKey("author")
@@ -30,6 +28,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.tableView.reloadData()
             }
         }
+    }
+    
+    @objc func onRefresh() {
+        
+        loadPosts()
         print("REFRESHED")
         // remove spinning refresh symbol
         self.refreshControl.endRefreshing()
@@ -49,19 +52,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        let query = PFQuery(className: "Posts")
-        query.order(byDescending: "createdAt")
-        query.includeKey("author")
-        
-        query.limit = 5
-        
-        query.findObjectsInBackground{ (posts, error) in
-            if posts != nil {
-                self.posts = posts!
-                self.tableView.reloadData()
-            }
-        }
+        loadPosts()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
