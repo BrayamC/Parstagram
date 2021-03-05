@@ -187,13 +187,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dem-0G-ZrG">
-                                                    <rect key="frame" x="28" y="409" width="45" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="16" y="409" width="47.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption to Image" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bq7-9Z-0X5">
-                                                    <rect key="frame" x="81" y="409" width="325" height="20.5"/>
+                                                    <rect key="frame" x="71.5" y="409" width="334.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -203,11 +203,11 @@
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="bq7-9Z-0X5" secondAttribute="bottom" constant="8" id="2rX-iH-FA3"/>
                                                 <constraint firstItem="bq7-9Z-0X5" firstAttribute="firstBaseline" secondItem="Dem-0G-ZrG" secondAttribute="firstBaseline" id="5m5-l2-d6z"/>
                                                 <constraint firstItem="bq7-9Z-0X5" firstAttribute="top" secondItem="g3O-eW-8qP" secondAttribute="bottom" constant="8" symbolic="YES" id="D0M-4b-2ED"/>
+                                                <constraint firstItem="Dem-0G-ZrG" firstAttribute="leading" secondItem="cah-w1-mVP" secondAttribute="leading" constant="16" id="EC3-52-0Gn"/>
                                                 <constraint firstItem="bq7-9Z-0X5" firstAttribute="centerY" secondItem="Dem-0G-ZrG" secondAttribute="centerY" id="HYU-ZF-BaY"/>
                                                 <constraint firstAttribute="trailing" secondItem="bq7-9Z-0X5" secondAttribute="trailing" constant="8" id="Lt9-Jr-Eca"/>
                                                 <constraint firstItem="g3O-eW-8qP" firstAttribute="leading" secondItem="cah-w1-mVP" secondAttribute="leading" constant="8" id="WhY-8Z-M3Y"/>
                                                 <constraint firstAttribute="trailing" secondItem="g3O-eW-8qP" secondAttribute="trailing" constant="8" id="XXa-9L-85C"/>
-                                                <constraint firstItem="Dem-0G-ZrG" firstAttribute="leading" secondItem="cah-w1-mVP" secondAttribute="leadingMargin" constant="8" id="b3D-eV-k6V"/>
                                                 <constraint firstItem="g3O-eW-8qP" firstAttribute="top" secondItem="cah-w1-mVP" secondAttribute="top" constant="8" id="hax-PF-vLJ"/>
                                                 <constraint firstItem="bq7-9Z-0X5" firstAttribute="baseline" secondItem="Dem-0G-ZrG" secondAttribute="firstBaseline" id="sUX-UP-SDY"/>
                                                 <constraint firstItem="bq7-9Z-0X5" firstAttribute="leading" secondItem="Dem-0G-ZrG" secondAttribute="trailing" constant="8" id="tfL-YJ-Tkd"/>
@@ -217,6 +217,42 @@
                                             <outlet property="captionLabel" destination="bq7-9Z-0X5" id="e3J-dG-jQg"/>
                                             <outlet property="photoView" destination="g3O-eW-8qP" id="h3T-ml-t1v"/>
                                             <outlet property="usernameLabel" destination="Dem-0G-ZrG" id="wRr-zf-wsP"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" id="bKw-c3-x58" customClass="CommentCell" customModule="Parstagram" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="479" width="414" height="37.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bKw-c3-x58" id="M8C-fB-4hl">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="37.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ljv-o9-d5i">
+                                                    <rect key="frame" x="16" y="8" width="47.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a comment" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUG-TU-Qj8">
+                                                    <rect key="frame" x="71.5" y="8" width="138.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Ljv-o9-d5i" firstAttribute="leading" secondItem="M8C-fB-4hl" secondAttribute="leading" constant="16" id="0nK-rD-pBh"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="KUG-TU-Qj8" secondAttribute="trailing" constant="8" id="528-0o-T0j"/>
+                                                <constraint firstItem="KUG-TU-Qj8" firstAttribute="leading" secondItem="Ljv-o9-d5i" secondAttribute="trailing" constant="8" id="Gso-4x-jvx"/>
+                                                <constraint firstItem="Ljv-o9-d5i" firstAttribute="top" secondItem="M8C-fB-4hl" secondAttribute="top" constant="8" id="JZs-eH-GJ5"/>
+                                                <constraint firstItem="KUG-TU-Qj8" firstAttribute="top" secondItem="M8C-fB-4hl" secondAttribute="top" constant="8" id="VD0-pn-n5d"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Ljv-o9-d5i" secondAttribute="bottom" constant="8" id="YBA-o1-XAG"/>
+                                                <constraint firstItem="KUG-TU-Qj8" firstAttribute="leading" secondItem="Ljv-o9-d5i" secondAttribute="trailing" constant="8" id="Zbh-35-hVb"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="KUG-TU-Qj8" secondAttribute="bottom" constant="8" id="c7o-zb-acN"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="commentLabel" destination="KUG-TU-Qj8" id="vTg-XI-DnA"/>
+                                            <outlet property="nameLabel" destination="Ljv-o9-d5i" id="Jy9-bk-d5c"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
