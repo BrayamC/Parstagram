@@ -16,6 +16,17 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     var refreshControl: UIRefreshControl!
     var numberOfPosts: Int! = 1
     
+    // Moves user to original screen
+    @IBAction func onLogOut(_ sender: Any) {
+        PFUser.logOut()
+        let main = UIStoryboard(name: "Main", bundle: nil)
+        // LoginViewController identifier of first screen
+        let LoginViewContoller = main.instantiateViewController(identifier: "LoginViewController")
+        let delegate = self.view.window?.windowScene?.delegate as! SceneDelegate
+        delegate.window?.rootViewController = LoginViewContoller
+    }
+    
+    
     func loadPosts(){
         let query = PFQuery(className: "Posts")
         query.order(byDescending: "createdAt")
