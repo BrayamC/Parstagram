@@ -15,10 +15,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
-        
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func onSignIn(_ sender: Any) {
@@ -30,13 +26,13 @@ class LoginViewController: UIViewController {
             if user != nil {
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
             } else {
-                print("Error: \(error?.localizedDescription)")
+                print("Error: \(error?.localizedDescription ?? " ")")
             }
         }
     }
     
     @IBAction func OnSignUp(_ sender: Any) {
-        var user = PFUser()
+        let user = PFUser()
         user.username = usernameField.text
         user.password = passwordField.text
         
@@ -44,20 +40,8 @@ class LoginViewController: UIViewController {
             if success {
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
             } else {
-                print("Error: \(error?.localizedDescription)")
+                print("Error: \(String(describing: error?.localizedDescription))")
             }
         }
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

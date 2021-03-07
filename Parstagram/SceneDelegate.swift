@@ -16,11 +16,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
+        // IF user is still logged in...
         if PFUser.current() != nil {
             let main = UIStoryboard(name: "Main", bundle: nil)
             self.window = UIWindow(windowScene: windowScene)
             // view controller currently being set in Storyboard as default will be overridden
-            let feedNavigationController = main.instantiateViewController(identifier: "FeedNavigationController")
+            let feedNavigationController = main.instantiateViewController(identifier: "TabBarController")
             print("window %@", window)
             self.window?.rootViewController = feedNavigationController
         }
