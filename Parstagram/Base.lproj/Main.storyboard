@@ -161,7 +161,7 @@
             </objects>
             <point key="canvasLocation" x="-672" y="3070"/>
         </scene>
-        <!--Item-->
+        <!--Feed-->
         <scene sceneID="wKH-G9-jMJ">
             <objects>
                 <viewController id="XWb-Wz-DUT" customClass="FeedViewController" customModule="Parstagram" customModuleProvider="target" sceneMemberID="viewController">
@@ -284,7 +284,7 @@
                         <viewLayoutGuide key="safeArea" id="j4k-dQ-n9o"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="na4-vl-ZPD"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="feed_tab" id="na4-vl-ZPD"/>
                     <navigationItem key="navigationItem" id="IWF-6Y-sFB">
                         <barButtonItem key="leftBarButtonItem" title="logout" id="7Ok-cC-zeN">
                             <connections>
@@ -305,11 +305,11 @@
             </objects>
             <point key="canvasLocation" x="-672" y="2338"/>
         </scene>
-        <!--Item-->
+        <!--Feed-->
         <scene sceneID="sy7-eC-hLu">
             <objects>
                 <navigationController storyboardIdentifier="FeedNavigationController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="c8u-c4-d6x" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Lcz-6y-l3a"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="feed_tab" id="Lcz-6y-l3a"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bhp-Uz-Nle">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -324,30 +324,55 @@
             </objects>
             <point key="canvasLocation" x="-672" y="1575"/>
         </scene>
-        <!--Item 1-->
+        <!--Profile Picture-->
         <scene sceneID="a6i-0I-dGA">
             <objects>
-                <viewController id="f2T-Ux-b0y" sceneMemberID="viewController">
+                <viewController id="f2T-Ux-b0y" customClass="ProfileTabViewController" customModule="Parstagram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="21r-bX-Lfy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TEMP********" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3X-Vd-4Ah">
-                                <rect key="frame" x="153" y="357" width="158" height="125"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="eoY-gk-UAK">
+                                <rect key="frame" x="6" y="129" width="402" height="375"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="I1a-yJ-dx3" appends="YES" id="sO1-Yz-jd0"/>
+                                </connections>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hoP-Pl-nqQ">
+                                <rect key="frame" x="153" y="524" width="108" height="30"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="onSubmit:" destination="f2T-Ux-b0y" eventType="touchUpInside" id="0vQ-Zg-bYj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="k8c-aZ-u4X"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="eoY-gk-UAK" firstAttribute="leading" secondItem="k8c-aZ-u4X" secondAttribute="leading" constant="6" id="48x-rw-1YN"/>
+                            <constraint firstItem="hoP-Pl-nqQ" firstAttribute="top" secondItem="eoY-gk-UAK" secondAttribute="bottom" constant="20" id="AtS-ON-ZWA"/>
+                            <constraint firstItem="k8c-aZ-u4X" firstAttribute="trailing" secondItem="hoP-Pl-nqQ" secondAttribute="trailing" constant="153" id="Dz3-ft-NY5"/>
+                            <constraint firstItem="k8c-aZ-u4X" firstAttribute="bottom" secondItem="hoP-Pl-nqQ" secondAttribute="bottom" constant="259" id="HhH-pZ-vd5"/>
+                            <constraint firstItem="hoP-Pl-nqQ" firstAttribute="leading" secondItem="k8c-aZ-u4X" secondAttribute="leading" constant="153" id="l98-D1-Nhu"/>
+                            <constraint firstItem="k8c-aZ-u4X" firstAttribute="trailing" secondItem="eoY-gk-UAK" secondAttribute="trailing" constant="6" id="zk5-vj-Bpx"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="HoX-uo-6zz"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile_tab" id="HoX-uo-6zz"/>
+                    <navigationItem key="navigationItem" title="Profile Picture" id="Nwd-JH-2bd"/>
+                    <connections>
+                        <outlet property="profileImageView" destination="eoY-gk-UAK" id="pPn-e7-qGP"/>
+                        <outlet property="submitUIButton" destination="hoP-Pl-nqQ" id="GK2-Zg-tu1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DOK-on-r9Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="I1a-yJ-dx3">
+                    <connections>
+                        <action selector="onCameraButton:" destination="f2T-Ux-b0y" id="zen-x5-wG0"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="892.75362318840587" y="1575"/>
+            <point key="canvasLocation" x="912" y="2338"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="kcs-r0-24g">
@@ -361,18 +386,37 @@
                     </tabBar>
                     <connections>
                         <segue destination="c8u-c4-d6x" kind="relationship" relationship="viewControllers" id="H9I-zH-g5m"/>
-                        <segue destination="f2T-Ux-b0y" kind="relationship" relationship="viewControllers" id="96o-jO-yvo"/>
+                        <segue destination="aWE-8W-BTO" kind="relationship" relationship="viewControllers" id="0Oi-Dg-CsV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="auZ-8V-wHc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="132" y="850"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="RYE-7l-Oi1">
+            <objects>
+                <navigationController id="aWE-8W-BTO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="7kZ-Pf-SNl"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tTU-ed-qjz">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="f2T-Ux-b0y" kind="relationship" relationship="rootViewController" id="3jw-XZ-inr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vbL-nx-ygL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="912" y="1575"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="feed_tab" width="25" height="25"/>
         <image name="image_placeholder" width="375" height="375"/>
         <image name="insta_camera_btn" width="25" height="25"/>
         <image name="instagram_logo" width="255" height="108"/>
+        <image name="profile_tab" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
