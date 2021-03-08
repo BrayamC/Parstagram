@@ -4,6 +4,7 @@
 //
 //  Created by Brayam Corral on 3/7/21.
 //
+// @ios-help Ive been trying to get an image from the parse database but I cant seem to get it to work. The image is in the "User" table in a column called "profilePicture"
 
 import UIKit
 import AlamofireImage
@@ -13,37 +14,49 @@ class ProfileTabViewController: UIViewController, UIImagePickerControllerDelegat
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var submitUIButton: UIButton!
+    @IBOutlet weak var updatedProfilePictureImageView: UIImageView!
     
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBAction func temp(_ sender: Any) {
+        
+        if let currentUser = PFUser.current(){
+        let imageFile = currentUser["profilePicture"] as! PFFileObject
+        print(imageFile)
+        let urlString = imageFile.url // CRASHES, image is nil
+        let url = URL(string: urlString!)!
+        updatedProfilePictureImageView.af_setImage(withURL: url)
+         }
+         
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //updatePicture()
+    }
     
+    // Update profile Picture
     @IBAction func onSubmit(_ sender: Any) {
-        submitUIButton.backgroundColor = UIColor.red
-        
-        // Edit current user in table "User"
-        let post = PFObject(className: "User")
-        post["author"] = PFUser.current()!
-        
+
         // Get image from image view and store into a Parse object
         let imageData = profileImageView.image!.pngData()
         let file = PFFileObject(data: imageData!)
         
-        // Store picture into database
-        post["profilePicture"] = file
-        
-        // Try to store in database
-        post.saveInBackground { (success, error) in
-            if success {
-                self.dismiss(animated: true, completion: nil)
-                print("Profile picture updated")
-            } else {
-                print("Could not update picture")
-            }
+        // Update profile Picture in database
+        if let currentUser = PFUser.current(){
+            currentUser["profilePicture"] = file
+            //set other fields the same way....
+            currentUser.saveInBackground()
         }
+        //temp(self)
+       
     }
+    
+    var image = [PFObject]()
+    
+    func updatePicture(){
+        
+        
+    }
+    
     
     @IBAction func onCameraButton(_ sender: Any) {
         
@@ -67,7 +80,7 @@ class ProfileTabViewController: UIViewController, UIImagePickerControllerDelegat
         let image = info[.editedImage] as! UIImage
         
         let size = CGSize(width: 300, height: 300)
-        let scaledImage = image.af_imageAspectScaled(toFit: size)
+        let scaledImage = image.af.imageAspectScaled(toFit: size)
         
         profileImageView.image = scaledImage
         

@@ -257,14 +257,14 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddCommentCell" id="jgA-EN-cfO">
-                                        <rect key="frame" x="0.0" y="516.5" width="414" height="37"/>
+                                        <rect key="frame" x="0.0" y="516.5" width="414" height="37.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jgA-EN-cfO" id="kgh-KR-j6b">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="37"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="37.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a comment..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ah4-2N-w4f">
-                                                    <rect key="frame" x="16" y="8" width="390" height="21"/>
+                                                    <rect key="frame" x="16" y="8" width="390" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -346,14 +346,32 @@
                                     <action selector="onSubmit:" destination="f2T-Ux-b0y" eventType="touchUpInside" id="0vQ-Zg-bYj"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0wT-mf-Rbk">
+                                <rect key="frame" x="115" y="649" width="184" height="144"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oih-SZ-a9e">
+                                <rect key="frame" x="83" y="580" width="75" height="41"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="temp:" destination="f2T-Ux-b0y" eventType="touchUpInside" id="IOr-L3-xgu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="k8c-aZ-u4X"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="eoY-gk-UAK" firstAttribute="leading" secondItem="k8c-aZ-u4X" secondAttribute="leading" constant="6" id="48x-rw-1YN"/>
+                            <constraint firstItem="k8c-aZ-u4X" firstAttribute="bottom" secondItem="0wT-mf-Rbk" secondAttribute="bottom" constant="20" id="7UT-Vb-vK3"/>
+                            <constraint firstItem="0wT-mf-Rbk" firstAttribute="leading" secondItem="k8c-aZ-u4X" secondAttribute="leading" constant="115" id="7os-DX-T5G"/>
                             <constraint firstItem="hoP-Pl-nqQ" firstAttribute="top" secondItem="eoY-gk-UAK" secondAttribute="bottom" constant="20" id="AtS-ON-ZWA"/>
                             <constraint firstItem="k8c-aZ-u4X" firstAttribute="trailing" secondItem="hoP-Pl-nqQ" secondAttribute="trailing" constant="153" id="Dz3-ft-NY5"/>
                             <constraint firstItem="k8c-aZ-u4X" firstAttribute="bottom" secondItem="hoP-Pl-nqQ" secondAttribute="bottom" constant="259" id="HhH-pZ-vd5"/>
+                            <constraint firstItem="k8c-aZ-u4X" firstAttribute="trailing" secondItem="0wT-mf-Rbk" secondAttribute="trailing" constant="115" id="MDI-D0-p5k"/>
+                            <constraint firstItem="0wT-mf-Rbk" firstAttribute="top" secondItem="oih-SZ-a9e" secondAttribute="bottom" constant="28" id="NBb-1e-qmJ"/>
+                            <constraint firstItem="k8c-aZ-u4X" firstAttribute="trailing" secondItem="oih-SZ-a9e" secondAttribute="trailing" constant="256" id="S1g-FV-9IL"/>
+                            <constraint firstItem="0wT-mf-Rbk" firstAttribute="top" secondItem="hoP-Pl-nqQ" secondAttribute="bottom" constant="95" id="XbJ-WT-ft7"/>
+                            <constraint firstItem="oih-SZ-a9e" firstAttribute="leading" secondItem="k8c-aZ-u4X" secondAttribute="leading" constant="83" id="ZDN-Qp-Eba"/>
+                            <constraint firstItem="oih-SZ-a9e" firstAttribute="top" secondItem="hoP-Pl-nqQ" secondAttribute="bottom" constant="26" id="d6s-CQ-1no"/>
                             <constraint firstItem="hoP-Pl-nqQ" firstAttribute="leading" secondItem="k8c-aZ-u4X" secondAttribute="leading" constant="153" id="l98-D1-Nhu"/>
                             <constraint firstItem="k8c-aZ-u4X" firstAttribute="trailing" secondItem="eoY-gk-UAK" secondAttribute="trailing" constant="6" id="zk5-vj-Bpx"/>
                         </constraints>
@@ -363,6 +381,7 @@
                     <connections>
                         <outlet property="profileImageView" destination="eoY-gk-UAK" id="pPn-e7-qGP"/>
                         <outlet property="submitUIButton" destination="hoP-Pl-nqQ" id="GK2-Zg-tu1"/>
+                        <outlet property="updatedProfilePictureImageView" destination="0wT-mf-Rbk" id="dqE-Nv-8bc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DOK-on-r9Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -372,7 +391,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="912" y="2338"/>
+            <point key="canvasLocation" x="911.59420289855075" y="2337.7232142857142"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="kcs-r0-24g">
