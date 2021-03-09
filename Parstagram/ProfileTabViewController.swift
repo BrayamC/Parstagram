@@ -16,14 +16,15 @@ class ProfileTabViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var submitUIButton: UIButton!
     @IBOutlet weak var updatedProfilePictureImageView: UIImageView!
     
+    // This works
     @IBAction func temp(_ sender: Any) {
         
         if let currentUser = PFUser.current(){
-        let imageFile = currentUser["profilePicture"] as! PFFileObject
-        print(imageFile)
-        let urlString = imageFile.url // CRASHES, image is nil
-        let url = URL(string: urlString!)!
-        updatedProfilePictureImageView.af_setImage(withURL: url)
+            let imageFile = currentUser["profilePicture"] as! PFFileObject
+            print(imageFile)
+            let urlString = imageFile.url // CRASHES, image is nil
+            let url = URL(string: urlString!)!
+            updatedProfilePictureImageView.af_setImage(withURL: url)
          }
          
     }
@@ -33,28 +34,41 @@ class ProfileTabViewController: UIViewController, UIImagePickerControllerDelegat
         //updatePicture()
     }
     
-    // Update profile Picture
+    // Update profile Picture -- Crashes here
     @IBAction func onSubmit(_ sender: Any) {
-
         // Get image from image view and store into a Parse object
         let imageData = profileImageView.image!.pngData()
         let file = PFFileObject(data: imageData!)
-        
         // Update profile Picture in database
         if let currentUser = PFUser.current(){
             currentUser["profilePicture"] = file
             //set other fields the same way....
             currentUser.saveInBackground()
         }
-        //temp(self)
-       
+
+        /*
+        // CRASHES HERE
+        if let currentUser = PFUser.current(){
+            let imageFile = currentUser["profilePicture"] as! PFFileObject
+            print(imageFile)
+            let urlString = imageFile.url // CRASHES, image is nil
+            let url = URL(string: urlString!)!
+            updatedProfilePictureImageView.af_setImage(withURL: url)
+         }
+ */
+
     }
     
     var image = [PFObject]()
     
     func updatePicture(){
-        
-        
+        if let currentUser = PFUser.current(){
+            let imageFile = currentUser["profilePicture"] as! PFFileObject
+            print(imageFile)
+            let urlString = imageFile.url // CRASHES, image is nil
+            let url = URL(string: urlString!)!
+            updatedProfilePictureImageView.af_setImage(withURL: url)
+         }
     }
     
     

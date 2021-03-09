@@ -11,7 +11,6 @@ import AlamofireImage
 import MessageInputBar
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MessageInputBarDelegate {
-
     
     @IBOutlet weak var tableView: UITableView!
     var posts = [PFObject]()
@@ -176,9 +175,18 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             let imageFile = post["image"] as! PFFileObject
             let urlString = imageFile.url!
             let url = URL(string: urlString)!
-            
             cell.photoView.af_setImage(withURL: url)
             
+            /*
+            /// Profile image
+            let profile = post["profilePicture"] as! PFFileObject
+            let urlString2 = imageFile.url
+            let url2 = URL(string: urlString2!)!
+            
+            cell.profileImageView.af_setImage(withURL: url2)
+            ///
+             */
+             
             return cell
         } else if indexPath.row <= comments.count{
             let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell") as! CommentCell
